@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.*;
 
@@ -93,6 +94,32 @@ public class Login extends JFrame implements ActionListener
         {
             setVisible(false);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
+        }
+        else if(e.getSource() == loginButton)
+        {
+            String susername = userTest.getText();
+            String spassword = passTest.getText();
+            String sloginAs = loginChoice.getSelectedItem();
+            try
+            {
+                Database c = new Database();
+                String query = "select * from Signup where username = '"+susername+"' , password '"+spassword+"' , usertype'"+sloginAs+"'"; //Read data form database 
+                ResultSet resultset = c.statement.executeQuery(query); // Store the get data from get database into ResultSet 
+                // Using if we check wether that data is presnt in data base or not
+                if(resultset.next())
+                {
+                    setVisible(false);
+                    new main_class();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Invalid Login"); //To show meassage
+                }
+            }
+            catch(Exception E)
+            {
+                E.printStackTrace();
+            }
         }
     }
 }
