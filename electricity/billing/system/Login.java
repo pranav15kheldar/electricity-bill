@@ -103,7 +103,7 @@ public class Login extends JFrame implements ActionListener
             try
             {
                 Database c = new Database();
-                String query = "select * from Signup where username = '"+susername+"' , password '"+spassword+"' , usertype'"+sloginAs+"'"; //Read data form database 
+                String query = "SELECT * from Signup WHERE username = '"+susername+"' and  password = '"+spassword+"' and usertype = '"+sloginAs+"'  "; //Read data form database 
                 ResultSet resultset = c.statement.executeQuery(query); // Store the get data from get database into ResultSet 
                 // Using if we check wether that data is presnt in data base or not
                 if(resultset.next())
