@@ -132,6 +132,7 @@ public class New_Coustomer extends JFrame implements ActionListener
         setSize(700 , 500);
         setLocation(400,200);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public static void main(String[] args) {
         new New_Coustomer();
@@ -152,11 +153,11 @@ public class New_Coustomer extends JFrame implements ActionListener
              try {
                 Database c = new Database();
                 // To add data into coustomer table
-                String query_customer = "insert into New_Coustomer value('" +sname+"' , '" +smeter+"' , '" +saddress+"' , '" +scity+"' , '" +scity+"' , '" +sstate+"', '" +semail+"' , '"+smobile+"')";
+                String query_customer = "INSERT into New_Coustomer value('"+sname+"' , '"+smeter+"' , '"+saddress+"' , '"+scity+"' , '" +sstate+"', '" +semail+"' , '"+smobile+"')";
                 c.statement.executeUpdate(query_customer);
 
                 // To add data into signup table
-               String query_signup = "insert into Signup value('" +smeter+"' , '' , '' , '" +sname+"' , '' , '')";
+               String query_signup = "insert into Signup value('" +smeter+"' , '' , '" +sname+"' , '' , '')";
                c.statement.executeUpdate(query_signup);
 
                 // To show New Customer is added sucessfully

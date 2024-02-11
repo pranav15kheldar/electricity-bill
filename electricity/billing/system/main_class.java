@@ -150,6 +150,7 @@ public class main_class extends JFrame
 
         setLayout(new FlowLayout());
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
     public static void main(String[] args) {

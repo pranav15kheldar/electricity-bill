@@ -123,6 +123,7 @@ public class Meter_info extends JFrame implements ActionListener
         setSize(700 , 500);
         setLocation(400,200);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public static void main(String[] args) {
         new Meter_info("");
@@ -149,7 +150,7 @@ public class Meter_info extends JFrame implements ActionListener
                setVisible(false);
             } catch (Exception E) 
             {
-                
+             E.printStackTrace();   
             }
 
         }
