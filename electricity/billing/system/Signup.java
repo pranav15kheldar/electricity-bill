@@ -2,8 +2,6 @@ package electricity.billing.system;
 
 import javax.swing.*;
 
-import com.mysql.cj.protocol.Resultset;
-
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Image;
@@ -175,8 +173,13 @@ public class Signup extends JFrame implements ActionListener {
             try {
                 Database c = new Database();
                 String query = null;
-                query = "insert into Signup value('" + Smeter + "' , '" + susername + "' , '" + Sname + "' , '"
-                        + Spassword + "' , '" + sAccountas + "')";
+                if (Accountas.equals("Admin")) {
+                    query = "insert into Signup value('" + Smeter + "' , '" + susername + "' , '" + Sname + "' , '"
+                            + Spassword + "' , '" + sAccountas + "')";
+                } else {
+                    query = "update into Signup value('" + Smeter + "' , '" + susername + "' , '" + Sname + "' , '"
+                            + Spassword + "' , '" + sAccountas + "') where meter_no = '" + Smeter + "'";
+                }
                 c.statement.executeUpdate(query);
 
                 // To show account is cerated

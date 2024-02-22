@@ -14,7 +14,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class main_class extends JFrame implements ActionListener {
-    main_class() {
+    String usernameAcctype;
+
+    main_class(String susernameAcctype) {
+        this.usernameAcctype = susernameAcctype;
         // Shortcut to set visiblity
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Get Frame of size of our screen
 
@@ -32,7 +35,7 @@ public class main_class extends JFrame implements ActionListener {
         // Adding Componets to menu bar named as Menu
         JMenu menu = new JMenu("Menu");
         menu.setFont(new Font("serif", Font.PLAIN, 15));// To set font of text
-        menubar.add(menu); // Add tab to menu bar
+
         // Add sub comopent to menu bar with image
         // New Coustomer
         JMenuItem newCoustomer = new JMenuItem("New Coustomer");
@@ -67,7 +70,7 @@ public class main_class extends JFrame implements ActionListener {
         // Addong New tab to menu bar named as Information
         JMenu info = new JMenu("Information");
         info.setFont(new Font("serif", Font.PLAIN, 15));
-        menubar.add(info);
+
         // Adding componets to INformation tab
         // Update information
         JMenuItem upinfo = new JMenuItem("Update Information");
@@ -106,7 +109,7 @@ public class main_class extends JFrame implements ActionListener {
         // Adding New tab to menu bar named as Bill
         JMenu bill = new JMenu("Bill");
         bill.setFont(new Font("serif", Font.PLAIN, 15));
-        menubar.add(bill);
+
         // Generate bill
         JMenuItem genBill = new JMenuItem("Generate Bill");
         genBill.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -118,7 +121,7 @@ public class main_class extends JFrame implements ActionListener {
         // Adding new tab to menu bar named as utility
         JMenu utility = new JMenu("Utility");
         utility.setFont(new Font("serif", Font.PLAIN, 15));
-        menubar.add(utility);
+
         // Adding Componets to utility tab
         // Note Pad
         JMenuItem notepad = new JMenuItem("Notepad");
@@ -140,7 +143,7 @@ public class main_class extends JFrame implements ActionListener {
         // Adding New Tab to menu bar as Exit
         JMenu exit = new JMenu("Exit");
         exit.setFont(new Font("serif", Font.PLAIN, 15));
-        menubar.add(exit);
+
         // Adding Componets to utility tab
         // Note Pad
         JMenuItem eexit = new JMenuItem("Exit");
@@ -150,6 +153,15 @@ public class main_class extends JFrame implements ActionListener {
         eexit.setIcon(new ImageIcon(eexitimg));
         exit.add(eexit);
 
+        if (usernameAcctype.equals("Admin")) {
+            menubar.add(menu); // Add tab to menu bar
+        } else {
+            menubar.add(info);
+            menubar.add(bill);
+            menubar.add(utility);
+            menubar.add(exit);
+        }
+
         setLayout(new FlowLayout());
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -157,7 +169,7 @@ public class main_class extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new main_class();
+        new main_class(" ");
     }
 
     @Override
